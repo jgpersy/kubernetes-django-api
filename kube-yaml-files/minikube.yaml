@@ -1,0 +1,40 @@
+# YAML which can be tested locally using minikube
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: someservice
+spec:
+ selector:
+   role: app
+ ports:
+   - protocol: TCP
+     port: 8000 
+     targetPort: 80
+     nodePort: 32001
+ type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: somedeployment
+ labels:
+   role: app
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     role: app
+ template:
+   metadata:
+     labels:
+       role: app
+   spec:
+     containers:
+      - name: app
+        image: "gunicorn-api:0.3"
+        imagePullPolicy: Never
+
+      - name: server
+        image: "ngin:0.3"
+        imagePullPolicy: Never
