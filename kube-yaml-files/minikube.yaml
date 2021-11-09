@@ -20,6 +20,7 @@ metadata:
  name: somedeployment
  labels:
    role: app
+   version: v1
 spec:
  replicas: 1
  selector:
@@ -33,6 +34,32 @@ spec:
      containers:
       - name: app
         image: "gunicorn-api:0.3"
+        imagePullPolicy: Never
+
+      - name: server
+        image: "ngin:0.3"
+        imagePullPolicy: Never
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: somedeployment2
+ labels:
+   role: app
+   version: v2
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     role: app
+ template:
+   metadata:
+     labels:
+       role: app
+   spec:
+     containers:
+      - name: app
+        image: "meatv2:0.4"
         imagePullPolicy: Never
 
       - name: server
