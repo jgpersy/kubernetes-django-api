@@ -1,0 +1,27 @@
+
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+    - host: recipes.info
+      http:
+        paths:
+          - path: /meat/
+            pathType: Prefix
+            backend:
+              service:
+                name: meat-service
+                port:
+                  number: 80
+          - path: /vegetarian/
+            pathType: Prefix
+            backend:
+              service:
+                name: vegetarian-service
+                port:
+                  number: 80
+
+

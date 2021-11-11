@@ -3,33 +3,52 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: someservice
+ name: meat-service
 spec:
  selector:
-   role: app
+  #  role: app
+   diet: meat
  ports:
    - protocol: TCP
-     port: 8000 
+     port: 80 
      targetPort: 80
-     nodePort: 32001
- type: LoadBalancer
+     nodePort: 32003
+ type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: vegetarian-service
+spec:
+ selector:
+  #  role: app
+   diet: vegetarian
+ ports:
+   - protocol: TCP
+     port: 80
+     targetPort: 80
+     nodePort: 32002
+ type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: somedeployment
+ name: meat-deployment
  labels:
    role: app
+   diet: meat
    version: v1
 spec:
  replicas: 1
  selector:
    matchLabels:
      role: app
+     diet: meat
  template:
    metadata:
      labels:
        role: app
+       diet: meat
    spec:
      containers:
       - name: app
@@ -43,19 +62,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: somedeployment2
+ name: meat-deployment2
  labels:
    role: app
+   diet: meat
    version: v2
 spec:
  replicas: 1
  selector:
    matchLabels:
      role: app
+     diet: meat
  template:
    metadata:
      labels:
        role: app
+       diet: meat
    spec:
      containers:
       - name: app
@@ -64,4 +86,31 @@ spec:
 
       - name: server
         image: "ngin:0.3"
+        imagePullPolicy: Never
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: veggie-deployment
+ labels:
+   role: app
+   diet: vegetarian
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     role: app
+     diet: vegetarian
+ template:
+   metadata:
+     labels:
+       role: app
+       diet: vegetarian
+   spec:
+     containers:
+      - name: app
+        image: "veg:0.1"
+        imagePullPolicy: Never
+      - name: server
+        image: "nginxveggie:0.2"
         imagePullPolicy: Never
