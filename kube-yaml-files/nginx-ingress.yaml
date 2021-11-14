@@ -1,5 +1,4 @@
-
-
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -23,5 +22,5 @@ spec:
                 name: vegetarian-service
                 port:
                   number: 80
-
+---
 
