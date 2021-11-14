@@ -45,7 +45,7 @@ On a production deploy this could be e.g. an AWS Application Load Balancer inste
 
 - Install istioctl and enable Istio in the cluster by following steps for ['Download Istio' and 'Install Istio'](https://istio.io/latest/docs/setup/getting-started/)
 
-- Enable the NGINX ingess [docs](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/)
+- Enable the NGINX ingess [(docs)](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/)
 `minikube addons enable ingress`
 
 - Verify that the NGINX Ingress controller is running
@@ -82,7 +82,8 @@ On a production deploy this could be e.g. an AWS Application Load Balancer inste
 - Run `kubectl get ingress`
 
 - Use the "Address" column's IP from the output and add the following line to the bottom of the /etc/hosts file on your computer (you will need administrator access)
-`ip-from-output recipes.info`
+
+```ip-from-output recipes.info```
 
 - You can now navigate to recipes.info in your browser, go to /meat/ or /vegetarian/ to see the API's response.
 
