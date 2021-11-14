@@ -82,7 +82,7 @@ On a production deploy this could be e.g. an AWS Application Load Balancer inste
 - Run `kubectl get ingress`
 
 - Use the "Address" column's IP from the output and add the following line to the bottom of the /etc/hosts file on your computer (you will need administrator access)
-
+e.g.
 `172.17.0.15 recipes.info`
 
 - You can now navigate to recipes.info in your browser, go to /meat/ or /vegetarian/ to see the API's response.
