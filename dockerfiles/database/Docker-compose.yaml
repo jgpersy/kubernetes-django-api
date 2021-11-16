@@ -1,0 +1,11 @@
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.sql
+    restart: always
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
