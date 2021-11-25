@@ -71,7 +71,7 @@ On a production deploy this could be e.g. an AWS Application Load Balancer inste
 
 - Run your kubectl applys
 
-`kubectl apply -f kube-yaml-files/minikube.yaml`
+`kubectl apply -f kube-yaml-files/apps.yaml`
 
 `kubectl apply -f kube-yaml-files/istio.yaml`
 
