@@ -1,6 +1,6 @@
 FROM python:3.11.0a1-alpine3.14
 RUN pip install gunicorn flask
-COPY ./flask-apis/api1-meat-recipes/meat-recipes.py /api/
+COPY ./flask-apis/api-meat-recipes/meat-recipes.py /api/
 EXPOSE 5000
 WORKDIR /api/
 CMD gunicorn --chdir /api/ --bind 0.0.0.0:5000 meat-recipes:app

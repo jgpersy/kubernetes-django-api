@@ -1,0 +1,7 @@
+{
+    "recipes": [
+        {"id":1, "recipe_title":"Beef Stroganoff", "recipe_text":"Beef Stroganoff recipe instructions blah blah"},
+        {"id":2, "recipe_title": "Steak", "recipe_text":"Steak recipe instructions blah blah"},
+        {"id":3, "recipe_title": "Pepperoni Pizza", "recipe_text":"Pepperoni Pizza recipe instructions blah blah"}
+    ]
+}

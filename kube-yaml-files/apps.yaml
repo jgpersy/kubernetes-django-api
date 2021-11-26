@@ -5,7 +5,6 @@ metadata:
  name: meat-service
 spec:
  selector:
-  #  role: app
    diet: meat
  ports:
    - protocol: TCP
@@ -20,7 +19,6 @@ metadata:
  name: vegetarian-service
 spec:
  selector:
-  #  role: app
    diet: vegetarian
  ports:
    - protocol: TCP
@@ -51,11 +49,11 @@ spec:
    spec:
      containers:
       - name: app
-        image: "meat-api-v1:0.3"
+        image: "meat-api-v1:0.5"
         imagePullPolicy: Never
 
       - name: server
-        image: "nginx-meat:0.3"
+        image: "nginx-meat:0.5"
         imagePullPolicy: Never
 ---
 apiVersion: apps/v1
@@ -80,11 +78,11 @@ spec:
    spec:
      containers:
       - name: app
-        image: "meat-api-v2:0.4"
+        image: "meat-api-v2:1.09"
         imagePullPolicy: Never
 
       - name: server
-        image: "nginx-meat:0.3"
+        image: "nginx-meat:0.5"
         imagePullPolicy: Never
 ---
 apiVersion: apps/v1
@@ -108,8 +106,8 @@ spec:
    spec:
      containers:
       - name: app
-        image: "veg-api:0.1"
+        image: "veg-api:0.5"
         imagePullPolicy: Never
       - name: server
-        image: "nginx-veggie:0.2"
+        image: "nginx-veggie:0.5"
         imagePullPolicy: Never
